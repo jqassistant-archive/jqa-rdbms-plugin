@@ -12,7 +12,7 @@
 	<artifactId>jqassistant.plugin.rdbms</artifactId>
 
 	<properties>
-		<us.fatehi.schemacrawler_version>11.02.01</us.fatehi.schemacrawler_version>
+		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
 	</properties>
 
 	<build>
@@ -75,26 +75,19 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.buschmais.jqassistant.plugin</groupId>
-				<artifactId>jqassistant.plugin.bom</artifactId>
-				<type>pom</type>
-				<scope>import</scope>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-db2</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-derby</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.apache.derby</groupId>
@@ -105,7 +98,7 @@
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-hsqldb</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.hsqldb</groupId>
@@ -116,7 +109,7 @@
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-mysql</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>mysql</groupId>
@@ -127,12 +120,12 @@
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-oracle</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-postgresql</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.postgresql</groupId>
@@ -143,7 +136,7 @@
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-sqlite</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.xerial</groupId>
@@ -154,7 +147,7 @@
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-sqlserver</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>net.sourceforge.jtds</groupId>
@@ -165,7 +158,7 @@
 			<dependency>
 				<groupId>us.fatehi</groupId>
 				<artifactId>schemacrawler-sybaseiq</artifactId>
-				<version>${us.fatehi.schemacrawler_version}</version>
+				<version>${us.fatehi.schemacrawler.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hsqldb</groupId>
@@ -180,22 +173,26 @@
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>jqassistant.plugin.common</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>jqassistant.plugin.java</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>jqassistant.plugin.common</artifactId>
 			<type>xsl</type>
 			<classifier>plugin2asciidoc</classifier>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>jqassistant.plugin.common</artifactId>
 			<type>xsl</type>
 			<classifier>rules2asciidoc-v2</classifier>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.core</groupId>
@@ -219,6 +216,7 @@
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>jqassistant.plugin.common</artifactId>
 			<type>test-jar</type>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>us.fatehi</groupId>
