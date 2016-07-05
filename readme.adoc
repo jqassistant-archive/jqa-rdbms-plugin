@@ -1,0 +1,11 @@
+= jQAssistant RDBMS Plugin
+
+This is the RDBMS Plugin of https://www.jqassistant.org[jQAssistant^].
+It enables jQAssistant to scan and to analyze RDBMS related
+artifacts like:
+
+- tables
+- columns
+- ...
+
+For more information on jQAssistant see https://www.jqassistant.org[^].
