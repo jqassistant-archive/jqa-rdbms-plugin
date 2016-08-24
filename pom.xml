@@ -11,6 +11,19 @@
 	<groupId>com.buschmais.jqassistant.plugin</groupId>
 	<artifactId>rdbms</artifactId>
 
+    <organization>
+        <name>buschmais GbR</name>
+        <url>http://www.buschmais.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License, v3</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
+
 	<properties>
 		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
 	</properties>
