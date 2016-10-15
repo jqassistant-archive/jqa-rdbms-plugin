@@ -34,6 +34,8 @@
 
 
 	<properties>
+        <jqa-java-plugin.version>1.2-SNAPSHOT</jqa-java-plugin.version>
+        <jqa-plugin-common.version>1.2-SNAPSHOT</jqa-plugin-common.version>
 		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
 	</properties>
 
@@ -167,12 +169,12 @@
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>common</artifactId>
-			<version>${project.version}</version>
+			<version>${jqa-plugin-common.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>java</artifactId>
-			<version>${project.version}</version>
+			<version>${jqa-java-plugin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.core</groupId>
@@ -196,7 +198,7 @@
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>common</artifactId>
 			<type>test-jar</type>
-			<version>${project.version}</version>
+			<version>${jqa-plugin-common.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
