@@ -10,9 +10,17 @@
 
 	<groupId>com.buschmais.jqassistant.plugin</groupId>
 	<artifactId>rdbms</artifactId>
-	<version>1.2-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
 
-    <organization>
+    <name>jQAssistant RDBMS Plugin</name>
+    <url>http://jqassistant.org/</url>
+
+    <description>
+        Plugin for jQAssistant to be able to scan and to
+        analyze RDBMS structures.
+    </description>
+
+	<organization>
         <name>buschmais GbR</name>
         <url>http://www.buschmais.com</url>
     </organization>
