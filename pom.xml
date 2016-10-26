@@ -32,6 +32,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:git@github.com:buschmais/jqa-rdbms-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:buschmais/jqa-rdbms-plugin.git</developerConnection>
+        <url>https://github.com/buschmais/jqa-rdbms-plugin</url>
+    </scm>
+
 
 	<properties>
         <jqa-java-plugin.version>1.2-RC1</jqa-java-plugin.version>
