@@ -41,7 +41,7 @@
 
 
 	<properties>
-        <jqa-java-plugin.version>1.2-RC1</jqa-java-plugin.version>
+        <jqa-java-plugin.version>1.2-RC2-SNAPSHOT</jqa-java-plugin.version>
         <jqa-plugin-common.version>1.2-RC1</jqa-plugin-common.version>
 		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
 	</properties>
