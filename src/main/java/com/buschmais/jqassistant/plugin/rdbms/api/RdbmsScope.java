@@ -1,6 +1,5 @@
 package com.buschmais.jqassistant.plugin.rdbms.api;
 
-import com.buschmais.jqassistant.core.scanner.api.ScannerContext;
 import com.buschmais.jqassistant.core.scanner.api.Scope;
 
 /**
@@ -11,15 +10,7 @@ public enum RdbmsScope implements Scope {
     /**
      * Defines the scope of a connection to a database.
      */
-    CONNECTION {
-        @Override
-        public void onEnter(ScannerContext context) {
-        }
-
-        @Override
-        public void onLeave(ScannerContext context) {
-        }
-    };
+    CONNECTION;
 
     @Override
     public String getPrefix() {
