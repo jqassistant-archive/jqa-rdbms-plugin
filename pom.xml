@@ -5,13 +5,44 @@
 	<parent>
 		<groupId>com.buschmais.jqassistant</groupId>
 		<artifactId>jqassistant.plugin.plugin-parent</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.2.0-RC2-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.buschmais.jqassistant.plugin</groupId>
 	<artifactId>rdbms</artifactId>
+    <version>1.2-RC2-SNAPSHOT</version>
+
+    <name>jQAssistant RDBMS Plugin</name>
+    <url>http://jqassistant.org/</url>
+
+    <description>
+        Plugin for jQAssistant to be able to scan and to
+        analyze RDBMS structures.
+    </description>
+
+	<organization>
+        <name>buschmais GbR</name>
+        <url>http://www.buschmais.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License, v3</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:buschmais/jqa-rdbms-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:buschmais/jqa-rdbms-plugin.git</developerConnection>
+        <url>https://github.com/buschmais/jqa-rdbms-plugin</url>
+      <tag>HEAD</tag>
+  </scm>
+
 
 	<properties>
+        <jqa-java-plugin.version>1.2-RC2-SNAPSHOT</jqa-java-plugin.version>
+        <jqa-plugin-common.version>1.2-RC2-SNAPSHOT</jqa-plugin-common.version>
 		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
 	</properties>
 
@@ -20,34 +51,6 @@
 			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-asciidoc-stylesheets</id>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>xml-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>transform-xml2asciidoc</id>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-asciidoc</id>
-						<phase>package</phase>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -173,26 +176,12 @@
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>common</artifactId>
-			<version>${project.version}</version>
+			<version>${jqa-plugin-common.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>java</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.buschmais.jqassistant.plugin</groupId>
-			<artifactId>common</artifactId>
-			<type>xsl</type>
-			<classifier>plugin2asciidoc</classifier>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.buschmais.jqassistant.plugin</groupId>
-			<artifactId>common</artifactId>
-			<type>xsl</type>
-			<classifier>rules2asciidoc-v2</classifier>
-			<version>${project.version}</version>
+			<version>${jqa-java-plugin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.buschmais.jqassistant.core</groupId>
@@ -216,7 +205,7 @@
 			<groupId>com.buschmais.jqassistant.plugin</groupId>
 			<artifactId>common</artifactId>
 			<type>test-jar</type>
-			<version>${project.version}</version>
+			<version>${jqa-plugin-common.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -276,4 +265,16 @@
 			<artifactId>hsqldb</artifactId>
 		</dependency>
 	</dependencies>
+
+    <repositories>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
 </project>
