@@ -1,8 +1,15 @@
 package com.buschmais.jqassistant.plugin.rdbms.impl.scanner;
 
+import static com.buschmais.jqassistant.core.scanner.api.ScannerPlugin.Requires;
+import static com.google.common.base.CaseFormat.LOWER_UNDERSCORE;
+import static com.google.common.base.CaseFormat.UPPER_CAMEL;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.core.scanner.api.Scope;
@@ -13,14 +20,7 @@ import com.buschmais.jqassistant.plugin.java.api.model.PropertyFileDescriptor;
 import com.buschmais.jqassistant.plugin.rdbms.api.model.ConnectionDescriptor;
 import com.buschmais.jqassistant.plugin.rdbms.api.model.SchemaDescriptor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import schemacrawler.tools.options.InfoLevel;
-
-import static com.buschmais.jqassistant.core.scanner.api.ScannerPlugin.Requires;
-
-import static com.google.common.base.CaseFormat.LOWER_UNDERSCORE;
-import static com.google.common.base.CaseFormat.UPPER_CAMEL;
 
 /**
  * Scans a database schema, the connection properties are taken from a property
@@ -42,7 +42,7 @@ public class ConnectionPropertyFileScannerPlugin extends AbstractSchemaScannerPl
 
         /**
          * Check if the property name matches this property.
-         * 
+         *
          * @param name
          *            The property.
          * @return `true` if the name matches.
@@ -60,7 +60,7 @@ public class ConnectionPropertyFileScannerPlugin extends AbstractSchemaScannerPl
 
     @Override
     public ConnectionDescriptor scan(FileResource item, String path, Scope scope, Scanner scanner) throws IOException {
-        PropertyFileDescriptor propertyFileDescriptor = scanner.getContext().peek(PropertyFileDescriptor.class);
+        PropertyFileDescriptor propertyFileDescriptor = scanner.getContext().getCurrentDescriptor();
         List<PropertyDescriptor> propertyDescriptors = propertyFileDescriptor.getProperties();
         String driver = null;
         String url = null;
@@ -102,7 +102,7 @@ public class ConnectionPropertyFileScannerPlugin extends AbstractSchemaScannerPl
 
     /**
      * Load a class, e.g. the JDBC driver.
-     * 
+     *
      * @param driver
      *            The class name.
      */
