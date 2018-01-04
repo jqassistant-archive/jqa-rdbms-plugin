@@ -1,11 +1,5 @@
 package com.buschmais.jqassistant.plugin.rdbms.scanner;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -16,18 +10,46 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.hsqldb.jdbc.JDBCDriver;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.jqassistant.plugin.common.test.AbstractPluginIT;
 import com.buschmais.jqassistant.plugin.common.test.scanner.MapBuilder;
 import com.buschmais.jqassistant.plugin.java.api.scanner.JavaScope;
 import com.buschmais.jqassistant.plugin.rdbms.api.RdbmsScope;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.*;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ColumnDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ColumnTypeDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ConnectionDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ForeignKeyDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ForeignKeyReferenceDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.FunctionDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.IndexDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.OnColumnDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.PrimaryKeyDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ProcedureDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.RoutineColumnDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.RoutineDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.SchemaDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.SequenceDesriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.TableDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.TriggerDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.ViewDescriptor;
 import com.buschmais.jqassistant.plugin.rdbms.impl.scanner.ConnectionPropertyFileScannerPlugin;
+
+import org.hsqldb.jdbc.JDBCDriver;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class SchemaScannerPluginIT extends AbstractPluginIT {
 
