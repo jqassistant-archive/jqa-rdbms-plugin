@@ -41,8 +41,8 @@
 
 
 	<properties>
-        <jqa-java-plugin.version>1.4-SNAPSHOT</jqa-java-plugin.version>
-        <jqa-plugin-common.version>1.4-SNAPSHOT</jqa-plugin-common.version>
+        <jqa-java-plugin.version>1.4</jqa-java-plugin.version>
+        <jqa-plugin-common.version>1.4</jqa-plugin-common.version>
 		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
 	</properties>
 
