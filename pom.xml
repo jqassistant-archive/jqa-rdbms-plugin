@@ -10,7 +10,7 @@
 
 	<groupId>com.buschmais.jqassistant.plugin</groupId>
 	<artifactId>rdbms</artifactId>
-    <version>1.5.0-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
 
     <name>jQAssistant RDBMS Plugin</name>
     <url>http://jqassistant.org/</url>
