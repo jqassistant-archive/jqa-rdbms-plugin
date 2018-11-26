@@ -1,5 +1,5 @@
 ifndef::jqa-in-manual[== Version 1.6.0]
 ifdef::jqa-in-manual[== RDBMS Plugin 1.6.0]
 
-TBW
+- Fixed a problem in the documentation of the RDBMS scanner plugin, the file providing the database connection properties must be prefixed with `jqassistant.plugin.rdbms`
 

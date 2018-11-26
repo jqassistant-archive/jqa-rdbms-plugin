@@ -16,8 +16,8 @@ jqassistant.sh scan -u rdbms:connection::jdbc:oracle:thin:username/password@host
 === Connection property file scanner
 
 The connection properties can also be read from property files having
-a file name with prefix `${project.ArtifactId}`, e.g.
-`${project.ArtifactId}_test.properties`. Each of them must contain at
+a file name with prefix `jqassistant.plugin.rdbms`, e.g.
+`jqassistant.plugin.rdbms_test.properties`. Each of them must contain at
 least the properties `driver`, `url`, `user` and `password`, e.g.
 
 [source]

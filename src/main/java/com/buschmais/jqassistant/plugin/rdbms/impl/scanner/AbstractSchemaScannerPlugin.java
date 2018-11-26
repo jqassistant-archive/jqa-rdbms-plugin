@@ -52,6 +52,7 @@ public abstract class AbstractSchemaScannerPlugin<I, D extends ConnectionDescrip
      */
     protected List<SchemaDescriptor> scanConnection(String url, String user, String password, String infoLevelName, String bundledDriverName,
                                                     Properties properties, Store store) throws IOException {
+        LOGGER.info("Scanning schema '{}'", url);
         Catalog catalog = getCatalog(url, user, password, infoLevelName, bundledDriverName, properties);
         return createSchemas(catalog, store);
     }
