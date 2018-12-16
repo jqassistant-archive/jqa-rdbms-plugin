@@ -35,9 +35,9 @@ import com.buschmais.jqassistant.plugin.rdbms.api.model.ViewDescriptor;
 import com.buschmais.jqassistant.plugin.rdbms.impl.scanner.ConnectionPropertyFileScannerPlugin;
 
 import org.hsqldb.jdbc.JDBCDriver;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -69,7 +69,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
     public static final String ROUTINE_NEW_PERSON = "NEW_PERSON";
     public static final String ROUTINE_AN_HOUR_BEFORE = "AN_HOUR_BEFORE";
 
-    @Before
+    @BeforeEach
     public void createStructures() throws SQLException, ClassNotFoundException {
         Class.forName(JDBCDriver.class.getName());
         try (Connection c = DriverManager.getConnection("jdbc:hsqldb:file:target/testdb", "SA", "")) {
@@ -341,7 +341,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
     }
 
     @Test
-    @Ignore("Need to investigate how schema crawler needs to be configured to retrieve sequence information from hsqldb")
+    @Disabled("Need to investigate how schema crawler needs to be configured to retrieve sequence information from hsqldb")
     public void sequences() throws IOException {
         scanFile(PROPERTIES_MAXIMUM);
         store.beginTransaction();
