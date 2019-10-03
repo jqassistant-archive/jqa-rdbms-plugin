@@ -33,9 +33,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:buschmais/jqa-rdbms-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:buschmais/jqa-rdbms-plugin.git</developerConnection>
-        <url>https://github.com/buschmais/jqa-rdbms-plugin</url>
+        <connection>scm:git:git@github.com:jqassistant/jqa-rdbms-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:jqassistant/jqa-rdbms-plugin.git</developerConnection>
+        <url>https://github.com/jqassistant/jqa-rdbms-plugin</url>
       <tag>HEAD</tag>
   </scm>
 
