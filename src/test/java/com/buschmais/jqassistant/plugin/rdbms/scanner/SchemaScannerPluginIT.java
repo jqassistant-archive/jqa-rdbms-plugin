@@ -417,8 +417,8 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The table descriptor.
      */
     private <T extends TableDescriptor> T getTableOrView(String table) {
-        List<T> t = query("match (t:Rdbms:Table) where t.name={table} return t", MapBuilder.<String, Object> create("table", table).get()).getColumn("t");
-        return t == null ? null : t.get(0);
+        TestResult result = query("match (t:Rdbms:Table) where t.name={table} return t", MapBuilder.<String, Object>create("table", table).get());
+        return result.getRows().isEmpty() ? null : result.<T>getColumn("t").get(0);
     }
 
     /**
@@ -431,9 +431,9 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The column descriptor.
      */
     private ColumnDescriptor getColumn(String table, String column) {
-        List<ColumnDescriptor> c = query("match (t:Table)-[:HAS_COLUMN]->(c:Rdbms:Column) where t.name={table} and c.name={column} return c",
-                MapBuilder.<String, Object> create("table", table).put("column", column).get()).getColumn("c");
-        return c == null ? null : c.get(0);
+        TestResult result = query("match (t:Table)-[:HAS_COLUMN]->(c:Rdbms:Column) where t.name={table} and c.name={column} return c",
+            MapBuilder.<String, Object>create("table", table).put("column", column).get());
+        return result.getRows().isEmpty() ? null : result.<ColumnDescriptor>getColumn("c").get(0);
     }
 
     /**
