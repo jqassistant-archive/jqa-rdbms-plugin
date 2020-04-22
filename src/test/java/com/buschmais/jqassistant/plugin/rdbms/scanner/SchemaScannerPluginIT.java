@@ -15,23 +15,7 @@ import com.buschmais.jqassistant.plugin.common.test.AbstractPluginIT;
 import com.buschmais.jqassistant.plugin.common.test.scanner.MapBuilder;
 import com.buschmais.jqassistant.plugin.java.api.scanner.JavaScope;
 import com.buschmais.jqassistant.plugin.rdbms.api.RdbmsScope;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ColumnDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ColumnTypeDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ConnectionDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ForeignKeyDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ForeignKeyReferenceDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.FunctionDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.IndexDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.OnColumnDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.PrimaryKeyDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ProcedureDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.RoutineColumnDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.RoutineDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.SchemaDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.SequenceDesriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.TableDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.TriggerDescriptor;
-import com.buschmais.jqassistant.plugin.rdbms.api.model.ViewDescriptor;
+import com.buschmais.jqassistant.plugin.rdbms.api.model.*;
 import com.buschmais.jqassistant.plugin.rdbms.impl.scanner.ConnectionPropertyFileScannerPlugin;
 
 import org.hsqldb.jdbc.JDBCDriver;
@@ -40,13 +24,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -417,7 +395,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The table descriptor.
      */
     private <T extends TableDescriptor> T getTableOrView(String table) {
-        TestResult result = query("match (t:Rdbms:Table) where t.name={table} return t", MapBuilder.<String, Object>create("table", table).get());
+        TestResult result = query("match (t:Rdbms:Table) where t.name=$table return t", MapBuilder.<String, Object>create("table", table).get());
         return result.getRows().isEmpty() ? null : result.<T>getColumn("t").get(0);
     }
 
@@ -431,7 +409,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The column descriptor.
      */
     private ColumnDescriptor getColumn(String table, String column) {
-        TestResult result = query("match (t:Table)-[:HAS_COLUMN]->(c:Rdbms:Column) where t.name={table} and c.name={column} return c",
+        TestResult result = query("match (t:Table)-[:HAS_COLUMN]->(c:Rdbms:Column) where t.name=$table and c.name=$column return c",
             MapBuilder.<String, Object>create("table", table).put("column", column).get());
         return result.getRows().isEmpty() ? null : result.<ColumnDescriptor>getColumn("c").get(0);
     }
@@ -444,7 +422,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The descriptor.
      */
     private ColumnTypeDescriptor getColumnType(String databaseType) {
-        List<ColumnTypeDescriptor> t = query("match (t:Rdbms:ColumnType) where t.databaseType={databaseType} return t",
+        List<ColumnTypeDescriptor> t = query("match (t:Rdbms:ColumnType) where t.databaseType=$databaseType return t",
                 MapBuilder.<String, Object> create("databaseType", databaseType).get()).getColumn("t");
         return t == null ? null : t.get(0);
     }
@@ -457,7 +435,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The foreign key descriptor.
      */
     private ForeignKeyDescriptor getForeignKey(String foreignKey) {
-        List<ForeignKeyDescriptor> f = query("match (f:Rdbms:ForeignKey) where f.name={foreignKey} return f",
+        List<ForeignKeyDescriptor> f = query("match (f:Rdbms:ForeignKey) where f.name=$foreignKey return f",
                 MapBuilder.<String, Object> create("foreignKey", foreignKey).get()).getColumn("f");
         return f == null ? null : f.get(0);
     }
@@ -470,7 +448,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The descriptor.
      */
     private SequenceDesriptor getSequence(String sequence) {
-        List<SequenceDesriptor> s = query("match (s:Rdbms:Sequence) where s.name={sequence} return s",
+        List<SequenceDesriptor> s = query("match (s:Rdbms:Sequence) where s.name=$sequence return s",
                 MapBuilder.<String, Object> create("sequence", sequence).get()).getColumn("s");
         return s == null ? null : s.get(0);
     }
@@ -483,7 +461,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The descriptor.
      */
     private <R extends RoutineDescriptor> R getRoutine(String name) {
-        List<R> s = query("match (s:Rdbms:Routine) where s.name={name} return s", MapBuilder.<String, Object> create("name", name).get()).getColumn("s");
+        List<R> s = query("match (s:Rdbms:Routine) where s.name=$name return s", MapBuilder.<String, Object> create("name", name).get()).getColumn("s");
         return s == null ? null : s.get(0);
     }
 }
