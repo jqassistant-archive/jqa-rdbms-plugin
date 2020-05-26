@@ -1,5 +1,7 @@
 = jQAssistant RDBMS Plugin
 
+image::https://github.com/jQAssistant/jqa-rdbms-plugin/workflows/jQA%20Standard%20CI%20Build/badge.svg[jQA Standard CI Build]
+
 This is the RDBMS Plugin of https://www.jqassistant.org[jQAssistant^].
 It enables jQAssistant to scan and to analyze RDBMS related
 artifacts like:
