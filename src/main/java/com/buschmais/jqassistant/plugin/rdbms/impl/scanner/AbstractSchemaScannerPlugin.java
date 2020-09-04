@@ -124,7 +124,7 @@ public abstract class AbstractSchemaScannerPlugin<I, D extends ConnectionDescrip
      * @return The list of created schema descriptors.
      * @throws java.io.IOException If an error occurs.
      */
-    private List<SchemaDescriptor> createSchemas(Catalog catalog, Store store) throws IOException {
+    protected List<SchemaDescriptor> createSchemas(Catalog catalog, Store store) throws IOException {
         List<SchemaDescriptor> schemaDescriptors = new ArrayList<>();
         Map<String, ColumnTypeDescriptor> columnTypes = new HashMap<>();
         Map<Column, ColumnDescriptor> allColumns = new HashMap<>();
