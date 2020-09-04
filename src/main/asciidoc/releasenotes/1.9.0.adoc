@@ -1,5 +1,7 @@
 ifndef::jqa-in-manual[== Version 1.9.0]
 ifdef::jqa-in-manual[== RDBMS Plugin 1.9.0]
 
-No changes.
-
+* Method `createSchemas(Catalog, Store)` of `com.buschmais.jqassistant.plugin.rdbms.impl.scanner.AbstractSchemaScannerPlugin`
+  is now protected. This change allows users to create a customized
+  variant of this plugin.
+  You can find https://github.com/jQAssistant/jqa-rdbms-plugin/pull/3[the corresponding PR here^].
