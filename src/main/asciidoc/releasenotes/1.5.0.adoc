@@ -1,5 +1,0 @@
-ifndef::jqa-in-manual[== Version 1.5.0]
-ifdef::jqa-in-manual[== RDBMS Plugin 1.5.0]
-
- No Changes.
-

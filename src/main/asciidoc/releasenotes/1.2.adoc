@@ -1,6 +1,0 @@
-ifndef::jqa-in-manual[== Version 1.2]
-ifdef::jqa-in-manual[== RDBMS Plugin 1.2]
-
-- Maven coordinates changed from `com.buschmais.jqassistant.plugin:jqassistant.plugin.rdbms`
-  to `com.buschmais.jqassistant.plugin:rdbms`.
-- No functional changes since version 1.1.3.

@@ -1,0 +1,28 @@
+
+= RDBMS Plugin
+
+== 1.9.0
+
+* Method `createSchemas(Catalog, Store)` of `com.buschmais.jqassistant.plugin.rdbms.impl.scanner.AbstractSchemaScannerPlugin`
+  is now protected. This change allows users to create a customized
+  variant of this plugin.
+  You can find https://github.com/jQAssistant/jqa-rdbms-plugin/pull/3[the corresponding PR here^].
+
+== 1.6.0
+
+* Fixed a problem in the documentation of the RDBMS scanner plugin,
+  the file providing the database connection properties must be
+  prefixed with `jqassistant.plugin.rdbms`.
+
+== 1.3
+
+* Only internal changes.
+
+== 1.2
+
+* Maven coordinates changed from `com.buschmais.jqassistant.plugin:jqassistant.plugin.rdbms`
+  to `com.buschmais.jqassistant.plugin:rdbms`.
+* No functional changes since version 1.1.3.
+
+
+
