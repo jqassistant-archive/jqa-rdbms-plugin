@@ -1,7 +1,7 @@
-<jpd:jqassistant-plugin xmlns:jpd="http://schema.jqassistant.org/plugin/v1.10"
-                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                        xsi:schemaLocation="http://schema.jqassistant.org/plugin/v1.10 https://schema.jqassistant.org/plugin/jqassistant-plugin-v1.10.xsd"
-                        name="RDBMS" id="jqa.plugin.rdbms">
+<jqassistant-plugin xmlns="http://schema.jqassistant.org/plugin/v1.10"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://schema.jqassistant.org/plugin/v1.10 https://schema.jqassistant.org/plugin/jqassistant-plugin-v1.10.xsd"
+                    name="RDBMS" id="jqa.plugin.rdbms">
     <description>Provides a scanner for importing the metadata of a relational database schema.</description>
     <model>
         <class>com.buschmais.jqassistant.plugin.rdbms.api.model.RdbmsDescriptor</class>
@@ -31,4 +31,4 @@
         <class>com.buschmais.jqassistant.plugin.rdbms.impl.scanner.ConnectionPropertyFileScannerPlugin</class>
         <class>com.buschmais.jqassistant.plugin.rdbms.impl.scanner.ConnectionUriScannerPlugin</class>
     </scanner>
-</jpd:jqassistant-plugin>
+</jqassistant-plugin>
