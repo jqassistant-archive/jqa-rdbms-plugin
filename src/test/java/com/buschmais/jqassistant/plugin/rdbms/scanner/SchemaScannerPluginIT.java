@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.Assert.fail;
 
-public class SchemaScannerPluginIT extends AbstractPluginIT {
+class SchemaScannerPluginIT extends AbstractPluginIT {
 
     public static final String PROPERTIES_MAXIMUM = "maximum";
     public static final String PROPERTIES_DEFAULT = "default";
@@ -48,7 +48,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
     public static final String ROUTINE_AN_HOUR_BEFORE = "AN_HOUR_BEFORE";
 
     @BeforeEach
-    public void createStructures() throws SQLException, ClassNotFoundException {
+    void createStructures() throws SQLException, ClassNotFoundException {
         Class.forName(JDBCDriver.class.getName());
         try (Connection c = DriverManager.getConnection("jdbc:hsqldb:file:target/testdb", "SA", "")) {
             execute(c, "drop procedure if exists new_person;");
@@ -75,7 +75,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * Verify view scanning.
      */
     @Test
-    public void view() {
+    void view() {
         SchemaDescriptor schemaDescriptor = scanFile(PROPERTIES_DEFAULT);
         store.beginTransaction();
         ViewDescriptor view = getTableOrView(VIEW_PERSON);
@@ -92,7 +92,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * Verify trigger scanning.
      */
     @Test
-    public void trigger() {
+    void trigger() {
         scanFile(PROPERTIES_MAXIMUM);
         store.beginTransaction();
         TableDescriptor table = getTableOrView(TABLE_PERSON);
@@ -114,7 +114,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * Verify functions and procedures.
      */
     @Test
-    public void routines() {
+    void routines() {
         scanFile(PROPERTIES_MAXIMUM);
         store.beginTransaction();
         // Function
@@ -158,7 +158,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * Scan using infolevel minimum
      */
     @Test
-    public void minimum() {
+    void minimum() {
         scanFile("minimum");
         store.beginTransaction();
         assertThat(getTableOrView(TABLE_PERSON), notNullValue());
@@ -170,7 +170,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
      * Scan using info level minimum
      */
     @Test
-    public void noTables() {
+    void noTables() {
         scanFile("notables");
         store.beginTransaction();
         assertThat(getTableOrView(TABLE_PERSON), nullValue());
@@ -178,7 +178,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
     }
 
     @Test
-    public void tablesAndColumns() {
+    void tablesAndColumns() {
         SchemaDescriptor schemaDescriptor = scanFile(PROPERTIES_DEFAULT);
         store.beginTransaction();
         // Verify person
@@ -280,7 +280,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
     }
 
     @Test
-    public void foreignKey() {
+    void foreignKey() {
         scanFile(PROPERTIES_DEFAULT);
         store.beginTransaction();
         TableDescriptor person = getTableOrView(TABLE_PERSON);
@@ -320,7 +320,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
 
     @Test
     @Disabled("Need to investigate how schema crawler needs to be configured to retrieve sequence information from hsqldb")
-    public void sequences() throws IOException {
+    void sequences() throws IOException {
         scanFile(PROPERTIES_MAXIMUM);
         store.beginTransaction();
         SequenceDesriptor sequenceDesriptor = getSequence(SEQUENCE_PERSON_SEQ);
@@ -334,7 +334,7 @@ public class SchemaScannerPluginIT extends AbstractPluginIT {
     }
 
     @Test
-    public void scanUrl() throws URISyntaxException {
+    void scanUrl() throws URISyntaxException {
         store.beginTransaction();
         URI uri = new URI("jdbc:hsqldb:file:target/testdb;username=SA&password=");
         Descriptor descriptor = getScanner().scan(uri, uri.toString(), RdbmsScope.CONNECTION);
