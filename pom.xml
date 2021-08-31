@@ -4,13 +4,13 @@
 	<parent>
 		<groupId>com.buschmais.jqassistant.plugin</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.11.0-RC-1</version>
+		<version>1.11.0-SNAPSHOT</version>
         <relativePath/>
 	</parent>
 
 	<groupId>com.buschmais.jqassistant.plugin</groupId>
 	<artifactId>rdbms</artifactId>
-    <version>1.11.0-RC-1</version>
+    <version>1.11.0-SNAPSHOT</version>
 
     <name>jQAssistant RDBMS Plugin</name>
     <url>http://jqassistant.org/</url>
@@ -41,8 +41,8 @@
 
 
 	<properties>
-        <jqa-java-plugin.version>1.11.0-RC-1</jqa-java-plugin.version>
-        <jqa-plugin-common.version>1.11.0-RC-1</jqa-plugin-common.version>
+        <jqa-java-plugin.version>1.11.0-SNAPSHOT</jqa-java-plugin.version>
+        <jqa-plugin-common.version>1.11.0-SNAPSHOT</jqa-plugin-common.version>
 		<us.fatehi.schemacrawler.version>11.02.01</us.fatehi.schemacrawler.version>
         <asciidoctor.toplevelid>rdbms-plugin</asciidoctor.toplevelid>
 	</properties>
