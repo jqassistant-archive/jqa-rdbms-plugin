@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.buschmais.jqassistant.core.shared.map.MapBuilder;
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.jqassistant.plugin.common.test.AbstractPluginIT;
-import com.buschmais.jqassistant.plugin.common.test.scanner.MapBuilder;
 import com.buschmais.jqassistant.plugin.java.api.scanner.JavaScope;
 import com.buschmais.jqassistant.plugin.rdbms.api.RdbmsScope;
 import com.buschmais.jqassistant.plugin.rdbms.api.model.*;
@@ -395,7 +395,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The table descriptor.
      */
     private <T extends TableDescriptor> T getTableOrView(String table) {
-        TestResult result = query("match (t:Rdbms:Table) where t.name=$table return t", MapBuilder.<String, Object>create("table", table).get());
+        TestResult result = query("match (t:Rdbms:Table) where t.name=$table return t", MapBuilder.<String, Object>builder().entry("table", table).build());
         return result.getRows().isEmpty() ? null : result.<T>getColumn("t").get(0);
     }
 
@@ -410,7 +410,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
      */
     private ColumnDescriptor getColumn(String table, String column) {
         TestResult result = query("match (t:Table)-[:HAS_COLUMN]->(c:Rdbms:Column) where t.name=$table and c.name=$column return c",
-            MapBuilder.<String, Object>create("table", table).put("column", column).get());
+            MapBuilder.<String, Object>builder().entry("table", table).entry("column", column).build());
         return result.getRows().isEmpty() ? null : result.<ColumnDescriptor>getColumn("c").get(0);
     }
 
@@ -423,7 +423,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
      */
     private ColumnTypeDescriptor getColumnType(String databaseType) {
         List<ColumnTypeDescriptor> t = query("match (t:Rdbms:ColumnType) where t.databaseType=$databaseType return t",
-                MapBuilder.<String, Object> create("databaseType", databaseType).get()).getColumn("t");
+                MapBuilder.<String, Object> builder().entry("databaseType", databaseType).build()).getColumn("t");
         return t == null ? null : t.get(0);
     }
 
@@ -436,7 +436,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
      */
     private ForeignKeyDescriptor getForeignKey(String foreignKey) {
         List<ForeignKeyDescriptor> f = query("match (f:Rdbms:ForeignKey) where f.name=$foreignKey return f",
-                MapBuilder.<String, Object> create("foreignKey", foreignKey).get()).getColumn("f");
+                MapBuilder.<String, Object> builder().entry("foreignKey", foreignKey).build()).getColumn("f");
         return f == null ? null : f.get(0);
     }
 
@@ -449,7 +449,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
      */
     private SequenceDesriptor getSequence(String sequence) {
         List<SequenceDesriptor> s = query("match (s:Rdbms:Sequence) where s.name=$sequence return s",
-                MapBuilder.<String, Object> create("sequence", sequence).get()).getColumn("s");
+                MapBuilder.<String, Object> builder().entry("sequence", sequence).build()).getColumn("s");
         return s == null ? null : s.get(0);
     }
 
@@ -461,7 +461,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
      * @return The descriptor.
      */
     private <R extends RoutineDescriptor> R getRoutine(String name) {
-        List<R> s = query("match (s:Rdbms:Routine) where s.name=$name return s", MapBuilder.<String, Object> create("name", name).get()).getColumn("s");
+        List<R> s = query("match (s:Rdbms:Routine) where s.name=$name return s", MapBuilder.<String, Object> builder().entry("name", name).build()).getColumn("s");
         return s == null ? null : s.get(0);
     }
 }
