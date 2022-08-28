@@ -100,6 +100,7 @@ Describes a database table.
 |====
 | Name | Description
 | name | The name of the table.
+| remarks | The remarks of the table.
 |====
 
 .Relations of `:Rdbms:Table`
@@ -121,6 +122,7 @@ Describes a database view.
 |====
 | Name | Description
 | name | The name of the view.
+| remarks | The remarks of the view.
 |====
 
 .Relations of `:Rdbms:View`
@@ -147,6 +149,7 @@ Describes a column of a table.
 | partOfIndex      | Indicates that the column is part of an index
 | partOfPrimaryKey | Indicates that the column is part of the primary key
 | partOfForeignKey | Indicates that the column is part of a foreign key
+| remarks          | The remarks of the column.
 |====
 
 .Relations of `:Rdbms:Column`
@@ -294,4 +297,5 @@ Describes a database sequence.
 | maximumValue | The maximum value
 | increment    | The increment
 | cycle        | Indicates that the sequence restarts at the minimumValue if the the maximumValue has been reached.
+| remarks      | The remarks of the sequence.
 |====

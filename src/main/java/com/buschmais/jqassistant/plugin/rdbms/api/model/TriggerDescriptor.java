@@ -4,7 +4,7 @@ import com.buschmais.jqassistant.plugin.common.api.model.NamedDescriptor;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("Trigger")
-public interface TriggerDescriptor extends RdbmsDescriptor, NamedDescriptor {
+public interface TriggerDescriptor extends RdbmsDescriptor, NamedDescriptor, WithRemarksDescriptor {
 
     String getActionCondition();
 
@@ -29,4 +29,5 @@ public interface TriggerDescriptor extends RdbmsDescriptor, NamedDescriptor {
     String getEventManipulationTime();
 
     void setEventManipulationTime(String eventManipulationTime);
+
 }
