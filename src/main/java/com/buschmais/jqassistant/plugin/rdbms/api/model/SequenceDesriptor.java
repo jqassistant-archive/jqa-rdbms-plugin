@@ -4,7 +4,7 @@ import com.buschmais.jqassistant.plugin.common.api.model.NamedDescriptor;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("Sequence")
-public interface SequenceDesriptor extends RdbmsDescriptor, NamedDescriptor, WithRemarksDescriptor {
+public interface SequenceDesriptor extends RdbmsDescriptor, NamedDescriptor, CommentedDescriptor {
 
     long getIncrement();
 

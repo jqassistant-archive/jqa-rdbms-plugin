@@ -169,7 +169,7 @@ public abstract class AbstractSchemaScannerPlugin<I, D extends ConnectionDescrip
                 columnDescriptor.setPartOfPrimaryKey(column.isPartOfPrimaryKey());
                 columnDescriptor.setPartOfForeignKey(column.isPartOfForeignKey());
                 columnDescriptor.setAutoIncremented(column.isAutoIncremented());
-                columnDescriptor.setRemarks(column.getRemarks());
+                columnDescriptor.setComment(column.getRemarks());
                 tableDescriptor.getColumns().add(columnDescriptor);
                 localColumns.put(column.getName(), columnDescriptor);
                 allColumns.put(column, columnDescriptor);
@@ -323,7 +323,7 @@ public abstract class AbstractSchemaScannerPlugin<I, D extends ConnectionDescrip
             sequenceDesriptor.setMinimumValue(sequence.getMinimumValue().longValue());
             sequenceDesriptor.setMaximumValue(sequence.getMaximumValue().longValue());
             sequenceDesriptor.setCycle(sequence.isCycle());
-            sequenceDesriptor.setRemarks(sequence.getRemarks());
+            sequenceDesriptor.setComment(sequence.getRemarks());
             schemaDescriptor.getSequences().add(sequenceDesriptor);
         }
     }
@@ -352,7 +352,7 @@ public abstract class AbstractSchemaScannerPlugin<I, D extends ConnectionDescrip
             schemaDescriptor.getTables().add(tableDescriptor);
         }
         tableDescriptor.setName(table.getName());
-        tableDescriptor.setRemarks(table.getRemarks());
+        tableDescriptor.setComment(table.getRemarks());
         return tableDescriptor;
     }
 

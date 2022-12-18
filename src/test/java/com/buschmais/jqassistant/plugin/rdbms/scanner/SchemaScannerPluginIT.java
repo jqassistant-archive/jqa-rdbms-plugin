@@ -59,18 +59,14 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
             execute(c, "drop view if exists PERSON_VIEW");
             execute(c, "drop table if exists PERSON");
             execute(c, "create table PERSON(a decimal(10,5), b decimal(5,2), c varchar(255) default 'defaultValue')");
-            execute(c, "comment on table PERSON is 'table remarks'");
-            execute(c, "comment on column PERSON.a is 'column remarks'");
+            execute(c, "comment on table PERSON is 'table comment'");
+            execute(c, "comment on column PERSON.a is 'column comment'");
             execute(c, "alter table PERSON add constraint PK_PERSON primary key (A,B)");
             execute(c, "create table ADDRESS(PERSON_A decimal(10,5), PERSON_B decimal(5,2))");
             execute(c, "alter table ADDRESS add constraint FK_ADDRESS_PERSON foreign key (PERSON_A,PERSON_B) references PERSON(A,B)");
             execute(c, "create sequence PERSON_SEQ minvalue 100 maxvalue 10000  start with 100 increment by 10 cycle");
-            // FIXME: hsqldb should support commenting on sequence, but it fails. needs more investigation
-//            execute(c, "comment on SEQUENCE PERSON_SEQ is 'sequence remarks'");
             execute(c, "create view PERSON_VIEW as select a from PERSON");
             execute(c, "create trigger PERSON_TRIGGER after insert ON PERSON when (true) delete from PERSON");
-            // FIXME: hsqldb should support commenting on sequence, but it fails. needs more investigation
-//            execute(c, "comment on TRIGGER PERSON_TRIGGER is 'trigger remarks'");
             execute(c, "CREATE FUNCTION an_hour_before(t TIMESTAMP)\n" + "  RETURNS TIMESTAMP\n" + "  RETURN t-1 HOUR");
             execute(c, "CREATE PROCEDURE new_person(OUT c varchar(255), IN a decimal(10,5), IN b decimal(5,2))\n" + "  MODIFIES SQL DATA\n"
                     + "  BEGIN ATOMIC\n" + "    INSERT INTO PERSON VALUES (a, b, 'test');\n" + "    SET c = 'test';\n" + "  END;");
@@ -113,7 +109,6 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
         assertThat(triggerDescriptor.getActionStatement(), equalTo("DELETE FROM PUBLIC.PERSON"));
         assertThat(triggerDescriptor.getConditionTiming(), equalTo("after"));
         assertThat(triggerDescriptor.getEventManipulationTime(), equalTo("insert"));
-//        assertThat(triggerDescriptor.getRemarks(), equalTo("trigger remarks"));
         store.commitTransaction();
     }
 
@@ -192,7 +187,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
         TableDescriptor person = getTableOrView(TABLE_PERSON);
         assertThat(schemaDescriptor.getTables(), hasItem(person));
         assertThat(person.getName(), equalTo(TABLE_PERSON));
-        assertThat(person.getRemarks(), equalTo("table remarks"));
+        assertThat(person.getComment(), equalTo("table comment"));
         // Verify column A
         ColumnDescriptor a = getColumn(TABLE_PERSON, COLUMN_A);
         assertThat(a.getName(), equalTo(COLUMN_A));
@@ -204,7 +199,7 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
         assertThat(a.isPartOfPrimaryKey(), equalTo(true));
         assertThat(a.isPartOfIndex(), equalTo(true));
         assertThat(a.isPartOfForeignKey(), equalTo(false));
-        assertThat(a.getRemarks(), equalTo("column remarks"));
+        assertThat(a.getComment(), equalTo("column comment"));
         assertThat(person.getColumns(), hasItem(a));
         // Verify column B
         ColumnDescriptor b = getColumn(TABLE_PERSON, COLUMN_B);
@@ -339,7 +334,6 @@ class SchemaScannerPluginIT extends AbstractPluginIT {
         assertThat(sequenceDesriptor.getMaximumValue(), equalTo(10000l));
         assertThat(sequenceDesriptor.getIncrement(), equalTo(10l));
         assertThat(sequenceDesriptor.isCycle(), equalTo(true));
-//        assertThat(sequenceDesriptor.getRemarks(), equalTo("sequences remarks"));
         store.commitTransaction();
     }
 

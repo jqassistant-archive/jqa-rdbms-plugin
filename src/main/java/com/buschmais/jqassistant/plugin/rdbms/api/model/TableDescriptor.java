@@ -7,7 +7,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("Table")
-public interface TableDescriptor extends RdbmsDescriptor, NamedDescriptor, WithRemarksDescriptor {
+public interface TableDescriptor extends RdbmsDescriptor, NamedDescriptor, CommentedDescriptor {
 
     @Relation("HAS_PRIMARY_KEY")
     PrimaryKeyDescriptor getPrimaryKey();

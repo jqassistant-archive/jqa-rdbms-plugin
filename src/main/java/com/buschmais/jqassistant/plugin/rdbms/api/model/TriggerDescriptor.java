@@ -4,7 +4,7 @@ import com.buschmais.jqassistant.plugin.common.api.model.NamedDescriptor;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("Trigger")
-public interface TriggerDescriptor extends RdbmsDescriptor, NamedDescriptor, WithRemarksDescriptor {
+public interface TriggerDescriptor extends RdbmsDescriptor, NamedDescriptor, CommentedDescriptor {
 
     String getActionCondition();
 
