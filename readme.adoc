@@ -1,5 +1,7 @@
 = jQAssistant RDBMS Plugin
 
+NOTE:: This project has been archived and is no longer actively developed. It has been superseded by the https://github.com/jqassistant-plugin/jqassistant-rdbms-plugin[jqassistant-rdbms-plugin]
+
 This is the RDBMS Plugin of https://jqassistant.org[jQAssistant^].
 It enables jQAssistant to scan and to analyze RDBMS related
 artifacts like:
